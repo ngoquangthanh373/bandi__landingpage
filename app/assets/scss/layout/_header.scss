@@ -1,0 +1,116 @@
+.header {
+	background-color: rgba(0, 0, 0, 0.2);
+	height: 70px;
+	display: flex;
+	align-items: center;
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	z-index: 100;
+	transition: background-color 2s;
+	&.sticky {
+		background-color: $primary-green;
+	}
+	&__wrapper {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		.header__wrap {
+			display: flex;
+			align-items: center;
+
+			.header__logo {
+				font-family: 'Pacifico', cursive;
+				font-size: 2.8rem;
+				color: $color-default-lightest;
+				margin-right: 26px;
+				transition: color 0.25s;
+				&:hover {
+					color: #0056b3;
+				}
+			}
+
+			.header__text {
+				font-size: 1.4rem;
+				color: $color-default-lightest;
+				opacity: 0.3;
+				padding-left: 22px;
+				border-left: 1px solid rgba(255, 255, 255, 0.5);
+				@media screen and (max-width: 320px) {
+					display: none;
+				}
+			}
+		}
+
+		.header__toggle {
+			display: none;
+			z-index: 100;
+			@media screen and (max-width: 640px) {
+				display: block;
+			}
+
+			.header__bars {
+				font-size: 2rem;
+				color: $color-default-lightest;
+			}
+		}
+
+		.header__menu {
+			list-style: none;
+			display: flex;
+			align-items: center;
+			@media screen and (max-width: 640px) {
+				display: block;
+				width: 300px;
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+				list-style: none;
+				transform: translateX(100%);
+				transition: transform 0.25s linear;
+				background-color: $primary-green;
+				&.is-show {
+					transform: translateX(0);
+				}
+			}
+			@media screen and (max-width: 375px) {
+				width: 200px;
+			}
+
+			.header__item {
+				margin: 0 15px;
+
+				.header__link {
+					padding: 32px 0 24px;
+					font-size: 1.3rem;
+					color: $color-default-lightest;
+					display: block;
+					transition: all 0.25s;
+					&:hover {
+						color: #0056b3;
+						border-top: 1px solid #0056b3;
+					}
+					&.active {
+						border-top: 1px solid #0056b3;
+					}
+					@media screen and (max-width: 640px) {
+						border-bottom: 1px solid $color-default-lightest;
+						&.active {
+							border-top: none;
+						}
+					}
+				}
+			}
+
+			.header__item:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}
